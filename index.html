@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Zuhaib | Personal Space</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #090909;
+    color: white;
+    min-height: 100vh;
+}
+
+header {
+    padding: 25px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #222;
+}
+
+.logo {
+    font-size: 23px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.logo span {
+    color: #d6ae68;
+}
+
+button {
+    cursor: pointer;
+}
+
+.theme {
+    background: #222;
+    color: white;
+    border: 1px solid #444;
+    padding: 10px 15px;
+    border-radius: 20px;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: auto;
+}
+
+.hero {
+    padding: 75px 0 45px;
+}
+
+.tag {
+    color: #d6ae68;
+    letter-spacing: 3px;
+    font-size: 12px;
+}
+
+.hero h1 {
+    font-size: clamp(38px, 8vw, 65px);
+    margin: 20px 0;
+}
+
+.hero h1 span {
+    color: #d6ae68;
+}
+
+.hero p {
+    color: #aaa;
+    line-height: 1.8;
+    max-width: 500px;
+}
+
+.section-title {
+    margin: 45px 0 20px;
+    font-size: 23px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.card {
+    background: #151515;
+    border: 1px solid #292929;
+    padding: 22px;
+    border-radius: 16px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    border-color: #d6ae68;
+    transform: translateY(-4px);
+}
+
+.icon {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    margin-bottom: 10px;
+}
+
+.card p {
+    color: #999;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+input, textarea {
+    width: 100%;
+    background: #222;
+    border: 1px solid #444;
+    padding: 13px;
+    margin: 8px 0;
+    border-radius: 9px;
+    color: white;
+    font-size: 15px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+.gold-btn {
+    background: #d6ae68;
+    color: #111;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+.item {
+    background: #222;
+    padding: 13px;
+    margin-top: 10px;
+    border-radius: 9px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    align-items: center;
+    overflow-wrap: anywhere;
+}
+
+.delete {
+    background: #792e2e;
+    color: white;
+    border: none;
+    padding: 7px 10px;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.total {
+    color: #d6ae68;
+    font-size: 25px;
+    margin: 15px 0;
+}
+
+footer {
+    text-align: center;
+    padding: 40px 10px;
+    color: #777;
+    margin-top: 50px;
+    border-top: 1px solid #222;
+}
+
+.light {
+    background: #f2f2f2;
+    color: #111;
+}
+
+.light .card {
+    background: white;
+    border-color: #ddd;
+}
+
+.light .card p,
+.light .hero p {
+    color: #555;
+}
+
+.light header,
+.light footer {
+    border-color: #ddd;
+}
+
+.light input,
+.light textarea {
+    background: white;
+    color: #111;
+    border-color: #ccc;
+}
+
+.light .item {
+    background: #eee;
+}
+
+.light .theme {
+    background: white;
+    color: black;
+}
+
+@media(max-width: 500px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    header {
+        padding: 20px 5%;
+    }
+
+    .hero {
+        padding-top: 55px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">ZUHAIB<span>.</span></div>
+    <button class="theme" onclick="toggleTheme()">
+        ☀️ Theme
+    </button>
+</header>
+
+<main class="container">
+
+<section class="hero">
+    <div class="tag">WELCOME TO MY PERSONAL SPACE</div>
+
+    <h1>Hello, I'm <span>Zuhaib.</span></h1>
+
+    <p>
+        Welcome to my personal digital world.
+        A place where I manage my life, save my ideas,
+        track my expenses and showcase my journey.
+    </p>
+</section>
+
+<h2 class="section-title">My Dashboard</h2>
+
+<div class="grid">
+
+    <div class="card">
+        <div class="icon">👤</div>
+        <h3>About Me</h3>
+        <p>Student, developer and creative thinker.
+        Always learning something new.</p>
+    </div>
+
+    <div class="card">
+        <div class="icon">🚀</div>
+        <h3>My Goals</h3>
+        <p>Build amazing projects, develop skills
+        and create something meaningful.</p>
+    </div>
+
+    <div class="card">
+        <div class="icon">💻</div>
+        <h3>My Projects</h3>
+        <p>BikeCare Pro, Student Portal
+        and my upcoming creations.</p>
+    </div>
+
+    <div class="card">
+        <div class="icon">✨</div>
+        <h3>My Space</h3>
+        <p>My own private place for ideas,
+        memories and personal growth.</p>
+    </div>
+
+</div>
+
+<h2 class="section-title">📝 Personal Notes</h2>
+
+<div class="card">
+    <textarea id="noteInput"
+    placeholder="Write something you want to remember..."></textarea>
+
+    <button class="gold-btn" onclick="addNote()">
+        + Save Note
+    </button>
+
+    <div id="notes"></div>
+</div>
+
+<h2 class="section-title">💰 Expense Tracker</h2>
+
+<div class="card">
+
+    <h3>Total Spending</h3>
+
+    <div class="total" id="total">₹0</div>
+
+    <input id="expenseName"
+    placeholder="Expense name">
+
+    <input id="expenseAmount"
+    type="number"
+    min="0.01"
+    step="0.01"
+    placeholder="Amount in ₹">
+
+    <button class="gold-btn" onclick="addExpense()">
+        + Add Expense
+    </button>
+
+    <div id="expenses"></div>
+
+</div>
+
+<h2 class="section-title">📸 My Gallery</h2>
+
+<div class="card">
+
+    <p>Add your favourite pictures to your personal gallery.</p>
+
+    <input type="file" id="photoInput" accept="image/*" multiple>
+
+    <div id="gallery" class="grid" style="margin-top:15px"></div>
+
+</div>
+
+<h2 class="section-title">📞 Contact</h2>
+
+<div class="card">
+    <h3>Let's Connect</h3>
+    <p>Thanks for visiting my personal website.</p>
+    <p style="margin-top:12px">Created by Zuhaib ❤️</p>
+</div>
+
+</main>
+
+<footer>
+    © 2026 ZUHAIB PERSONAL SPACE
+    <br><br>
+    Designed with ❤️
+</footer>
+
+<script>
+
+function getData(key) {
+    try {
+        return JSON.parse(localStorage.getItem(key)) || [];
+    } catch {
+        return [];
+    }
+}
+
+function saveData(key, data) {
+    localStorage.setItem(key, JSON.stringify(data));
+}
+
+// THEME
+
+function toggleTheme() {
+    document.body.classList.toggle("light");
+
+    localStorage.setItem(
+        "theme",
+        document.body.classList.contains("light") ? "light" : "dark"
+    );
+}
+
+if (localStorage.getItem("theme") === "light") {
+    document.body.classList.add("light");
+}
+
+// NOTES
+
+let notes = getData("zuhaibNotes");
+
+function showNotes() {
+    document.getElementById("notes").innerHTML = "";
+
+    notes.forEach((note, index) => {
+        let div = document.createElement("div");
+        div.className = "item";
+
+        let text = document.createElement("span");
+        text.textContent = note;
+
+        let button = document.createElement("button");
+        button.className = "delete";
+        button.textContent = "Delete";
+
+        button.onclick = () => {
+            notes.splice(index, 1);
+            localStorage.setItem("zuhaibNotes", JSON.stringify(notes));
+            showNotes();
+        };
+
+        div.append(text, button);
+        document.getElementById("notes").appendChild(div);
+    });
+}
+
+function addNote() {
+    let input = document.getElementById("noteInput");
+
+    if (!input.value.trim()) {
+        alert("Please write a note first!");
+        return;
+    }
+
+    notes.push(input.value.trim());
+
+    localStorage.setItem("zuhaibNotes", JSON.stringify(notes));
+
+    input.value = "";
+    showNotes();
+}
+
+// EXPENSE TRACKER
+
+let expenses = getData("zuhaibExpenses");
+
+function showExpenses() {
+    let list = document.getElementById("expenses");
+    list.innerHTML = "";
+
+    let total = expenses.reduce(
+        (sum, expense) => sum + expense.amount, 0
+    );
+
+    document.getElementById("total").textContent =
+        "₹" + total.toFixed(2);
+
+    expenses.forEach((expense, index) => {
+        let div = document.createElement("div");
+        div.className = "item";
+
+        let info = document.createElement("span");
+        info.textContent = expense.name + " - ₹" +
+            expense.amount.toFixed(2);
+
+        let button = document.createElement("button");
+        button.className = "delete";
+        button.textContent = "Delete";
+
+        button.onclick = () => {
+            expenses.splice(index, 1);
+            localStorage.setItem(
+                "zuhaibExpenses",
+                JSON.stringify(expenses)
+            );
+            showExpenses();
+        };
+
+        div.append(info, button);
+        list.appendChild(div);
+    });
+}
+
+function addExpense() {
+    let name = document.getElementById("expenseName").value.trim();
+    let amount = Number(document.getElementById("expenseAmount").value);
+
+    if (!name || !Number.isFinite(amount) || amount <= 0) {
+        alert("Enter a valid name and amount!");
+        return;
+    }
+
+    expenses.push({name, amount});
+
+    localStorage.setItem(
+        "zuhaibExpenses",
+        JSON.stringify(expenses)
+    );
+
+    document.getElementById("expenseName").value = "";
+    document.getElementById("expenseAmount").value = "";
+
+    showExpenses();
+}
+
+// GALLERY
+
+let galleryPhotos = getData("zuhaibGallery");
+
+function showGallery() {
+    let gallery = document.getElementById("gallery");
+    gallery.innerHTML = "";
+
+    galleryPhotos.forEach((photo, index) => {
+        let box = document.createElement("div");
+        box.className = "card";
+
+        let img = document.createElement("img");
+        img.src = photo;
+        img.style.width = "100%";
+        img.style.borderRadius = "10px";
+
+        let button = document.createElement("button");
+        button.className = "delete";
+        button.textContent = "Delete";
+        button.style.marginTop = "10px";
+
+        button.onclick = () => {
+            galleryPhotos.splice(index, 1);
+            localStorage.setItem(
+                "zuhaibGallery",
+                JSON.stringify(galleryPhotos)
+            );
+            showGallery();
+        };
+
+        box.append(img, button);
+        gallery.appendChild(box);
+    });
+}
+
+document.getElementById("photoInput").addEventListener("change", function() {
+
+    let files = Array.from(this.files);
+
+    if (files.length + galleryPhotos.length > 10) {
+        alert("Maximum 10 photos allowed.");
+        this.value = "";
+        return;
+    }
+
+    files.forEach(file => {
+        if (!file.type.startsWith("image/")) return;
+
+        if (file.size > 1500000) {
+            alert(file.name + " is too large. Choose an image under 1.5 MB.");
+            return;
+        }
+
+        let reader = new FileReader();
+
+        reader.onload = function(event) {
+            galleryPhotos.push(event.target.result);
+
+            try {
+                localStorage.setItem(
+                    "zuhaibGallery",
+                    JSON.stringify(galleryPhotos)
+                );
+                showGallery();
+            } catch {
+                galleryPhotos.pop();
+                alert("Storage is full. Delete some gallery photos.");
+            }
+        };
+
+        reader.readAsDataURL(file);
+    });
+
+    this.value = "";
+});
+
+// LOAD SAVED INFORMATION
+
+showNotes();
+showExpenses();
+showGallery();
+
+</script>
+
+</body>
+</html>
