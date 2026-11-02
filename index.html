@@ -1,54 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
-    <meta name="google-site-verification" content="m6nKMX3jTa0wor5R2KZ613Ur83uGN4Y13lHtAldJvPY" />
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="description" content="Zuhaib's personal portfolio, productivity dashboard and digital space.">
+<meta name="theme-color" content="#0b0b0b">
 <title>Zuhaib | Personal Space</title>
 
 <style>
+:root {
+    --bg: #0b0b0b;
+    --card: #171717;
+    --text: #ffffff;
+    --muted: #aaaaaa;
+    --gold: #d4af37;
+    --border: #333333;
+    --input: #222222;
+}
+
+body.light {
+    --bg: #f4f4f4;
+    --card: #ffffff;
+    --text: #171717;
+    --muted: #666666;
+    --border: #dddddd;
+    --input: #eeeeee;
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
+    background: var(--bg);
+    color: var(--text);
     font-family: Arial, sans-serif;
-    background: #090909;
-    color: white;
-    min-height: 100vh;
+    line-height: 1.6;
+    transition: .3s;
 }
 
-header {
-    padding: 25px 7%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #222;
-}
-
-.logo {
-    font-size: 23px;
-    font-weight: bold;
-    letter-spacing: 2px;
-}
-
-.logo span {
-    color: #d6ae68;
+button, input, textarea, select {
+    font: inherit;
 }
 
 button {
     cursor: pointer;
 }
 
-.theme {
-    background: #222;
-    color: white;
-    border: 1px solid #444;
-    padding: 10px 15px;
-    border-radius: 20px;
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 15px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: var(--gold);
+    font-size: 23px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+nav {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+}
+
+nav a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 13px;
+}
+
+nav a:hover {
+    color: var(--gold);
+}
+
+.theme-btn, .menu-btn {
+    background: var(--gold);
+    border: none;
+    padding: 9px 13px;
+    border-radius: 8px;
+    color: #000;
+    font-weight: bold;
+}
+
+.menu-btn {
+    display: none;
+}
+
+.hero {
+    min-height: 470px;
+    padding: 100px 8%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background:
+    radial-gradient(circle at 85% 30%, #42340d 0%, transparent 35%),
+    var(--bg);
+}
+
+.tag {
+    color: var(--gold);
+    letter-spacing: 3px;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.hero h1 {
+    font-size: clamp(40px, 8vw, 75px);
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: var(--gold);
+}
+
+.hero p {
+    max-width: 550px;
+    color: var(--muted);
+    font-size: 17px;
+}
+
+.btn {
+    display: inline-block;
+    background: var(--gold);
+    color: #000;
+    padding: 12px 22px;
+    margin-top: 25px;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 .container {
@@ -57,177 +153,203 @@ button {
     margin: auto;
 }
 
-.hero {
-    padding: 75px 0 45px;
-}
-
-.tag {
-    color: #d6ae68;
-    letter-spacing: 3px;
-    font-size: 12px;
-}
-
-.hero h1 {
-    font-size: clamp(38px, 8vw, 65px);
-    margin: 20px 0;
-}
-
-.hero h1 span {
-    color: #d6ae68;
-}
-
-.hero p {
-    color: #aaa;
-    line-height: 1.8;
-    max-width: 500px;
+section {
+    padding: 65px 0;
 }
 
 .section-title {
-    margin: 45px 0 20px;
-    font-size: 23px;
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.section-title span {
+    color: var(--gold);
+}
+
+.section-desc {
+    color: var(--muted);
+    margin-bottom: 30px;
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
 }
 
 .card {
-    background: #151515;
-    border: 1px solid #292929;
-    padding: 22px;
-    border-radius: 16px;
-    transition: 0.3s;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 23px;
+    transition: .25s;
 }
 
 .card:hover {
-    border-color: #d6ae68;
-    transform: translateY(-4px);
-}
-
-.icon {
-    font-size: 28px;
-    margin-bottom: 15px;
+    transform: translateY(-5px);
+    border-color: var(--gold);
 }
 
 .card h3 {
+    color: var(--gold);
     margin-bottom: 10px;
 }
 
 .card p {
-    color: #999;
-    font-size: 13px;
-    line-height: 1.6;
+    color: var(--muted);
 }
 
-input, textarea {
+.stat {
+    font-size: 28px;
+    color: var(--gold);
+    font-weight: bold;
+}
+
+input, textarea, select {
     width: 100%;
-    background: #222;
-    border: 1px solid #444;
-    padding: 13px;
+    padding: 12px;
+    background: var(--input);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
     margin: 8px 0;
-    border-radius: 9px;
-    color: white;
-    font-size: 15px;
 }
 
 textarea {
+    min-height: 100px;
     resize: vertical;
 }
 
 .gold-btn {
-    background: #d6ae68;
-    color: #111;
+    background: var(--gold);
+    color: #000;
     border: none;
-    padding: 12px 18px;
+    padding: 11px 16px;
     border-radius: 8px;
     font-weight: bold;
-    margin-top: 8px;
+    margin: 7px 0;
 }
 
-.item {
-    background: #222;
+.list-item {
+    background: var(--input);
     padding: 13px;
-    margin-top: 10px;
     border-radius: 9px;
+    margin-top: 10px;
     display: flex;
+    align-items: center;
     justify-content: space-between;
     gap: 10px;
-    align-items: center;
     overflow-wrap: anywhere;
 }
 
-.delete {
-    background: #792e2e;
+.list-item.done {
+    opacity: .55;
+    text-decoration: line-through;
+}
+
+.delete-btn {
+    background: #d94343;
     color: white;
     border: none;
     padding: 7px 10px;
     border-radius: 6px;
-    flex-shrink: 0;
 }
 
-.total {
-    color: #d6ae68;
-    font-size: 25px;
+.small-muted {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.progress {
+    height: 12px;
+    background: var(--input);
+    border-radius: 20px;
+    overflow: hidden;
     margin: 15px 0;
+}
+
+.progress div {
+    height: 100%;
+    background: var(--gold);
+    width: 0%;
+    transition: .3s;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.gallery-photo {
+    position: relative;
+}
+
+.gallery-photo button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
 }
 
 footer {
     text-align: center;
-    padding: 40px 10px;
-    color: #777;
-    margin-top: 50px;
-    border-top: 1px solid #222;
+    border-top: 1px solid var(--border);
+    padding: 30px;
+    color: var(--muted);
 }
 
-.light {
-    background: #f2f2f2;
-    color: #111;
+footer span {
+    color: var(--gold);
 }
 
-.light .card {
-    background: white;
-    border-color: #ddd;
+.socials {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 15px;
 }
 
-.light .card p,
-.light .hero p {
-    color: #555;
+.socials a {
+    color: var(--gold);
+    text-decoration: none;
 }
 
-.light header,
-.light footer {
-    border-color: #ddd;
-}
-
-.light input,
-.light textarea {
-    background: white;
-    color: #111;
-    border-color: #ccc;
-}
-
-.light .item {
-    background: #eee;
-}
-
-.light .theme {
-    background: white;
-    color: black;
-}
-
-@media(max-width: 500px) {
-    .grid {
-        grid-template-columns: 1fr;
+@media(max-width: 750px) {
+    nav {
+        display: none;
+        position: absolute;
+        top: 65px;
+        left: 0;
+        width: 100%;
+        background: var(--card);
+        padding: 20px;
+        flex-direction: column;
+        align-items: flex-start;
     }
 
-    header {
-        padding: 20px 5%;
+    nav.open {
+        display: flex;
+    }
+
+    .menu-btn {
+        display: inline-block;
     }
 
     .hero {
-        padding-top: 55px;
+        min-height: 390px;
+        padding: 70px 6%;
+    }
+
+    section {
+        padding: 45px 0;
     }
 }
 </style>
@@ -236,344 +358,698 @@ footer {
 <body>
 
 <header>
-    <div class="logo">ZUHAIB<span>.</span></div>
-    <button class="theme" onclick="toggleTheme()">
-        ☀️ Theme
-    </button>
+    <div class="logo">ZUHAIB.</div>
+
+    <button class="menu-btn" onclick="toggleMenu()">☰</button>
+
+    <nav id="navigation">
+        <a href="#home" onclick="closeMenu()">Home</a>
+        <a href="#about" onclick="closeMenu()">About</a>
+        <a href="#projects" onclick="closeMenu()">Projects</a>
+        <a href="#dashboard" onclick="closeMenu()">Dashboard</a>
+        <a href="#contact" onclick="closeMenu()">Contact</a>
+        <button class="theme-btn" onclick="toggleTheme()">☀ / ☾</button>
+    </nav>
 </header>
 
-<main class="container">
+<!-- HOME -->
 
-<section class="hero">
-    <div class="tag">WELCOME TO MY PERSONAL SPACE</div>
+<div class="hero" id="home">
+    <div class="tag">WELCOME TO MY DIGITAL WORLD</div>
 
-    <h1>Hello, I'm <span>Zuhaib.</span></h1>
+    <h1>Hello, I'm<br><span>Zuhaib.</span></h1>
 
     <p>
-        Welcome to my personal digital world.
-        A place where I manage my life, save my ideas,
-        track my expenses and showcase my journey.
+        A creative mind, technology enthusiast and future
+        professional developer. This is my personal space
+        to learn, create, organise and grow.
     </p>
+
+    <a href="#about" class="btn">Explore My World →</a>
+</div>
+
+<!-- ABOUT -->
+
+<section id="about">
+<div class="container">
+    <h2 class="section-title">About <span>Me</span></h2>
+    <p class="section-desc">A little introduction about myself.</p>
+
+    <div class="grid">
+        <div class="card">
+            <h3>👋 Who Am I?</h3>
+            <p>
+                I'm Zuhaib, a technology enthusiast interested
+                in web development, creativity and learning
+                new things.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🎯 My Vision</h3>
+            <p>
+                To become a skilled developer, build useful
+                digital products and create something meaningful.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>✨ My Interests</h3>
+            <p>
+                Technology, photography, swimming, music,
+                travelling and creative projects.
+            </p>
+        </div>
+    </div>
+</div>
 </section>
 
-<h2 class="section-title">My Dashboard</h2>
+<!-- SKILLS -->
 
-<div class="grid">
+<section id="skills">
+<div class="container">
+    <h2 class="section-title">My <span>Skills</span></h2>
+    <p class="section-desc">Technologies and areas I'm exploring.</p>
+
+    <div class="grid">
+        <div class="card"><h3>HTML</h3><p>Web structure</p></div>
+        <div class="card"><h3>CSS</h3><p>Design and styling</p></div>
+        <div class="card"><h3>JavaScript</h3><p>Interactive websites</p></div>
+        <div class="card"><h3>Android</h3><p>Mobile application development</p></div>
+        <div class="card"><h3>UI / UX</h3><p>Creative user experiences</p></div>
+        <div class="card"><h3>Problem Solving</h3><p>Learning and building solutions</p></div>
+    </div>
+</div>
+</section>
+
+<!-- PROJECTS -->
+
+<section id="projects">
+<div class="container">
+    <h2 class="section-title">My <span>Projects</span></h2>
+    <p class="section-desc">Things I'm building and learning.</p>
+
+    <div class="grid">
+        <div class="card">
+            <h3>🚲 BikeCare Pro</h3>
+            <p>A project focused on motorcycle care and services.</p>
+        </div>
+
+        <div class="card">
+            <h3>🎓 Student Portal</h3>
+            <p>A digital platform concept for student information and services.</p>
+        </div>
+
+        <div class="card">
+            <h3>🌐 Personal Website</h3>
+            <p>My own digital space, portfolio and productivity dashboard.</p>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- EDUCATION -->
+
+<section id="education">
+<div class="container">
+    <h2 class="section-title">My <span>Education</span></h2>
 
     <div class="card">
-        <div class="icon">👤</div>
-        <h3>About Me</h3>
-        <p>Student, developer and creative thinker.
-        Always learning something new.</p>
+        <h3>🎓 Education Journey</h3>
+        <p>
+            I'm pursuing my learning journey in computer
+            applications and technology.
+        </p>
+        <p class="small-muted">
+            Update this section with your college, course
+            and graduation details.
+        </p>
     </div>
+</div>
+</section>
+
+<!-- DASHBOARD -->
+
+<section id="dashboard">
+<div class="container">
+    <h2 class="section-title">My <span>Dashboard</span></h2>
+    <p class="section-desc">
+        Your personal space to organise everyday life.
+    </p>
+
+    <div class="grid">
+        <div class="card">
+            <h3>📝 Personal Notes</h3>
+            <input id="noteInput" placeholder="Write a new note...">
+            <button class="gold-btn" onclick="addNote()">Save Note</button>
+            <div id="noteList"></div>
+        </div>
+
+        <div class="card">
+            <h3>💰 Expense Tracker</h3>
+            <input id="expenseName" placeholder="Expense name">
+            <input id="expenseAmount" type="number" min="0" step="0.01" placeholder="Amount">
+            <button class="gold-btn" onclick="addExpense()">Add Expense</button>
+            <h2 class="stat" id="totalExpense">₹0</h2>
+            <div id="expenseList"></div>
+        </div>
+
+        <div class="card">
+            <h3>✓ My To-Do List</h3>
+            <input id="todoInput" placeholder="Enter your task">
+            <button class="gold-btn" onclick="addTodo()">Add Task</button>
+            <div id="todoList"></div>
+        </div>
+
+        <div class="card">
+            <h3>🎯 Daily Goals</h3>
+            <input id="goalInput" placeholder="Enter a daily goal">
+            <button class="gold-btn" onclick="addGoal()">Add Goal</button>
+            <div id="goalList"></div>
+            <p class="small-muted" id="goalProgress">0% completed</p>
+            <div class="progress"><div id="goalBar"></div></div>
+        </div>
+
+        <div class="card">
+            <h3>📅 Daily Planner</h3>
+            <input type="date" id="plannerDate">
+            <input id="plannerInput" placeholder="Your plan">
+            <button class="gold-btn" onclick="addPlan()">Add Plan</button>
+            <div id="plannerList"></div>
+        </div>
+
+        <div class="card">
+            <h3>🔥 Habit Tracker</h3>
+            <div id="habitList"></div>
+            <p id="habitProgress" class="stat">0%</p>
+            <div class="progress"><div id="habitBar"></div></div>
+        </div>
+    </div>
+</div>
+</section>
+
+<!-- GALLERY -->
+
+<section id="gallery">
+<div class="container">
+    <h2 class="section-title">My <span>Gallery</span></h2>
+    <p class="section-desc">Keep your favourite memories here.</p>
 
     <div class="card">
-        <div class="icon">🚀</div>
-        <h3>My Goals</h3>
-        <p>Build amazing projects, develop skills
-        and create something meaningful.</p>
+        <input type="file" id="photoInput" accept="image/*" multiple>
+        <p class="small-muted">Maximum 10 photos, up to 1.5 MB each.</p>
+        <div class="gallery-grid" id="galleryList"></div>
     </div>
+</div>
+</section>
+
+<!-- CONTACT -->
+
+<section id="contact">
+<div class="container">
+    <h2 class="section-title">Let's <span>Connect</span></h2>
+    <p class="section-desc">Have an idea, project or opportunity? Get in touch.</p>
 
     <div class="card">
-        <div class="icon">💻</div>
-        <h3>My Projects</h3>
-        <p>BikeCare Pro, Student Portal
-        and my upcoming creations.</p>
+        <h3>Contact Me</h3>
+
+        <input id="contactName" placeholder="Your name">
+        <input id="contactEmail" type="email" placeholder="Your email">
+        <textarea id="contactMessage" placeholder="Write your message"></textarea>
+
+        <button class="gold-btn" onclick="sendMessage()">Send Message</button>
+
+        <p class="small-muted">
+            Replace the email address in the JavaScript
+            with your own before using this feature.
+        </p>
+
+        <div class="socials">
+            <a href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a>
+            <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+            <a href="https://linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
     </div>
-
-    <div class="card">
-        <div class="icon">✨</div>
-        <h3>My Space</h3>
-        <p>My own private place for ideas,
-        memories and personal growth.</p>
-    </div>
-
 </div>
-
-<h2 class="section-title">📝 Personal Notes</h2>
-
-<div class="card">
-    <textarea id="noteInput"
-    placeholder="Write something you want to remember..."></textarea>
-
-    <button class="gold-btn" onclick="addNote()">
-        + Save Note
-    </button>
-
-    <div id="notes"></div>
-</div>
-
-<h2 class="section-title">💰 Expense Tracker</h2>
-
-<div class="card">
-
-    <h3>Total Spending</h3>
-
-    <div class="total" id="total">₹0</div>
-
-    <input id="expenseName"
-    placeholder="Expense name">
-
-    <input id="expenseAmount"
-    type="number"
-    min="0.01"
-    step="0.01"
-    placeholder="Amount in ₹">
-
-    <button class="gold-btn" onclick="addExpense()">
-        + Add Expense
-    </button>
-
-    <div id="expenses"></div>
-
-</div>
-
-<h2 class="section-title">📸 My Gallery</h2>
-
-<div class="card">
-
-    <p>Add your favourite pictures to your personal gallery.</p>
-
-    <input type="file" id="photoInput" accept="image/*" multiple>
-
-    <div id="gallery" class="grid" style="margin-top:15px"></div>
-
-</div>
-
-<h2 class="section-title">📞 Contact</h2>
-
-<div class="card">
-    <h3>Let's Connect</h3>
-    <p>Thanks for visiting my personal website.</p>
-    <p style="margin-top:12px">Created by Zuhaib ❤️</p>
-</div>
-
-</main>
+</section>
 
 <footer>
-    © 2026 ZUHAIB PERSONAL SPACE
-    <br><br>
-    Designed with ❤️
+    <p>Designed with ❤️ by <span>Zuhaib</span></p>
+    <p>© <span id="year"></span> Zuhaib Personal. All rights reserved.</p>
 </footer>
 
 <script>
 
-function getData(key) {
+// GENERAL
+
+const $ = id => document.getElementById(id);
+
+function load(key, fallback = []) {
     try {
-        return JSON.parse(localStorage.getItem(key)) || [];
+        const value = JSON.parse(localStorage.getItem(key));
+        return value ?? fallback;
     } catch {
-        return [];
+        return fallback;
     }
 }
 
-function saveData(key, data) {
-    localStorage.setItem(key, JSON.stringify(data));
+function save(key, value) {
+    try {
+        localStorage.setItem(key, JSON.stringify(value));
+    } catch {
+        alert("Storage is full. Please remove some saved items.");
+    }
 }
 
-// THEME
+function toggleMenu() {
+    $("navigation").classList.toggle("open");
+}
+
+function closeMenu() {
+    $("navigation").classList.remove("open");
+}
 
 function toggleTheme() {
     document.body.classList.toggle("light");
 
     localStorage.setItem(
-        "theme",
+        "zuhaibTheme",
         document.body.classList.contains("light") ? "light" : "dark"
     );
 }
 
-if (localStorage.getItem("theme") === "light") {
+if (localStorage.getItem("zuhaibTheme") === "light") {
     document.body.classList.add("light");
 }
 
+$("year").textContent = new Date().getFullYear();
+
 // NOTES
 
-let notes = getData("zuhaibNotes");
-
-function showNotes() {
-    document.getElementById("notes").innerHTML = "";
-
-    notes.forEach((note, index) => {
-        let div = document.createElement("div");
-        div.className = "item";
-
-        let text = document.createElement("span");
-        text.textContent = note;
-
-        let button = document.createElement("button");
-        button.className = "delete";
-        button.textContent = "Delete";
-
-        button.onclick = () => {
-            notes.splice(index, 1);
-            localStorage.setItem("zuhaibNotes", JSON.stringify(notes));
-            showNotes();
-        };
-
-        div.append(text, button);
-        document.getElementById("notes").appendChild(div);
-    });
-}
+let notes = load("zuhaibNotes");
 
 function addNote() {
-    let input = document.getElementById("noteInput");
+    const text = $("noteInput").value.trim();
 
-    if (!input.value.trim()) {
-        alert("Please write a note first!");
-        return;
-    }
+    if (!text) return alert("Write a note first!");
 
-    notes.push(input.value.trim());
-
-    localStorage.setItem("zuhaibNotes", JSON.stringify(notes));
-
-    input.value = "";
+    notes.push(text);
+    save("zuhaibNotes", notes);
+    $("noteInput").value = "";
     showNotes();
 }
 
-// EXPENSE TRACKER
+function showNotes() {
+    $("noteList").innerHTML = "";
 
-let expenses = getData("zuhaibExpenses");
+    notes.forEach((note, i) => {
+        const item = document.createElement("div");
+        item.className = "list-item";
 
-function showExpenses() {
-    let list = document.getElementById("expenses");
-    list.innerHTML = "";
+        const text = document.createElement("span");
+        text.textContent = note;
 
-    let total = expenses.reduce(
-        (sum, expense) => sum + expense.amount, 0
-    );
-
-    document.getElementById("total").textContent =
-        "₹" + total.toFixed(2);
-
-    expenses.forEach((expense, index) => {
-        let div = document.createElement("div");
-        div.className = "item";
-
-        let info = document.createElement("span");
-        info.textContent = expense.name + " - ₹" +
-            expense.amount.toFixed(2);
-
-        let button = document.createElement("button");
-        button.className = "delete";
-        button.textContent = "Delete";
-
+        const button = document.createElement("button");
+        button.className = "delete-btn";
+        button.textContent = "×";
         button.onclick = () => {
-            expenses.splice(index, 1);
-            localStorage.setItem(
-                "zuhaibExpenses",
-                JSON.stringify(expenses)
-            );
-            showExpenses();
+            notes.splice(i, 1);
+            save("zuhaibNotes", notes);
+            showNotes();
         };
 
-        div.append(info, button);
-        list.appendChild(div);
+        item.append(text, button);
+        $("noteList").append(item);
     });
 }
 
+// EXPENSES
+
+let expenses = load("zuhaibExpenses");
+
 function addExpense() {
-    let name = document.getElementById("expenseName").value.trim();
-    let amount = Number(document.getElementById("expenseAmount").value);
+    const name = $("expenseName").value.trim();
+    const amount = Number($("expenseAmount").value);
 
     if (!name || !Number.isFinite(amount) || amount <= 0) {
-        alert("Enter a valid name and amount!");
-        return;
+        return alert("Enter a valid name and amount.");
     }
 
     expenses.push({name, amount});
+    save("zuhaibExpenses", expenses);
 
-    localStorage.setItem(
-        "zuhaibExpenses",
-        JSON.stringify(expenses)
-    );
-
-    document.getElementById("expenseName").value = "";
-    document.getElementById("expenseAmount").value = "";
+    $("expenseName").value = "";
+    $("expenseAmount").value = "";
 
     showExpenses();
 }
 
-// GALLERY
+function showExpenses() {
+    $("expenseList").innerHTML = "";
 
-let galleryPhotos = getData("zuhaibGallery");
+    const total = expenses.reduce((sum, e) => sum + e.amount, 0);
 
-function showGallery() {
-    let gallery = document.getElementById("gallery");
-    gallery.innerHTML = "";
+    $("totalExpense").textContent =
+        "₹" + total.toLocaleString("en-IN", {
+            maximumFractionDigits: 2
+        });
 
-    galleryPhotos.forEach((photo, index) => {
-        let box = document.createElement("div");
-        box.className = "card";
+    expenses.forEach((expense, i) => {
+        const item = document.createElement("div");
+        item.className = "list-item";
 
-        let img = document.createElement("img");
-        img.src = photo;
-        img.style.width = "100%";
-        img.style.borderRadius = "10px";
+        const text = document.createElement("span");
+        text.textContent = expense.name + " — ₹" + expense.amount;
 
-        let button = document.createElement("button");
-        button.className = "delete";
-        button.textContent = "Delete";
-        button.style.marginTop = "10px";
-
+        const button = document.createElement("button");
+        button.className = "delete-btn";
+        button.textContent = "×";
         button.onclick = () => {
-            galleryPhotos.splice(index, 1);
-            localStorage.setItem(
-                "zuhaibGallery",
-                JSON.stringify(galleryPhotos)
-            );
-            showGallery();
+            expenses.splice(i, 1);
+            save("zuhaibExpenses", expenses);
+            showExpenses();
         };
 
-        box.append(img, button);
-        gallery.appendChild(box);
+        item.append(text, button);
+        $("expenseList").append(item);
     });
 }
 
-document.getElementById("photoInput").addEventListener("change", function() {
+// TO DO
 
-    let files = Array.from(this.files);
+let todos = load("zuhaibTodos");
 
-    if (files.length + galleryPhotos.length > 10) {
-        alert("Maximum 10 photos allowed.");
-        this.value = "";
-        return;
-    }
+function addTodo() {
+    const value = $("todoInput").value.trim();
 
-    files.forEach(file => {
-        if (!file.type.startsWith("image/")) return;
+    if (!value) return alert("Enter a task.");
 
-        if (file.size > 1500000) {
-            alert(file.name + " is too large. Choose an image under 1.5 MB.");
-            return;
-        }
+    todos.push({text: value, done: false});
+    save("zuhaibTodos", todos);
+    $("todoInput").value = "";
+    showTodos();
+}
 
-        let reader = new FileReader();
+function showTodos() {
+    $("todoList").innerHTML = "";
 
-        reader.onload = function(event) {
-            galleryPhotos.push(event.target.result);
+    todos.forEach((todo, i) => {
+        const item = document.createElement("div");
+        item.className = "list-item";
 
-            try {
-                localStorage.setItem(
-                    "zuhaibGallery",
-                    JSON.stringify(galleryPhotos)
-                );
-                showGallery();
-            } catch {
-                galleryPhotos.pop();
-                alert("Storage is full. Delete some gallery photos.");
-            }
+        if (todo.done) item.classList.add("done");
+
+        const label = document.createElement("label");
+        const checkbox = document.createElement("input");
+
+        checkbox.type = "checkbox";
+        checkbox.style.width = "auto";
+        checkbox.checked = todo.done;
+
+        checkbox.onchange = () => {
+            todos[i].done = checkbox.checked;
+            save("zuhaibTodos", todos);
+            showTodos();
         };
 
-        reader.readAsDataURL(file);
+        label.append(checkbox, document.createTextNode(" " + todo.text));
+
+        const button = document.createElement("button");
+        button.className = "delete-btn";
+        button.textContent = "×";
+        button.onclick = () => {
+            todos.splice(i, 1);
+            save("zuhaibTodos", todos);
+            showTodos();
+        };
+
+        item.append(label, button);
+        $("todoList").append(item);
+    });
+}
+
+// DAILY GOALS
+
+let goals = load("zuhaibGoals");
+
+function addGoal() {
+    const value = $("goalInput").value.trim();
+
+    if (!value) return alert("Enter a goal.");
+
+    goals.push({text: value, done: false});
+    save("zuhaibGoals", goals);
+    $("goalInput").value = "";
+    showGoals();
+}
+
+function showGoals() {
+    $("goalList").innerHTML = "";
+
+    goals.forEach((goal, i) => {
+        const item = document.createElement("div");
+        item.className = "list-item";
+
+        const label = document.createElement("label");
+        const checkbox = document.createElement("input");
+
+        checkbox.type = "checkbox";
+        checkbox.style.width = "auto";
+        checkbox.checked = goal.done;
+
+        checkbox.onchange = () => {
+            goals[i].done = checkbox.checked;
+            save("zuhaibGoals", goals);
+            showGoals();
+        };
+
+        label.append(checkbox, document.createTextNode(" " + goal.text));
+
+        const button = document.createElement("button");
+        button.className = "delete-btn";
+        button.textContent = "×";
+        button.onclick = () => {
+            goals.splice(i, 1);
+            save("zuhaibGoals", goals);
+            showGoals();
+        };
+
+        item.append(label, button);
+        $("goalList").append(item);
     });
 
-    this.value = "";
+    const percent = goals.length
+        ? Math.round(goals.filter(g => g.done).length / goals.length * 100)
+        : 0;
+
+    $("goalProgress").textContent = percent + "% completed";
+    $("goalBar").style.width = percent + "%";
+}
+
+// DAILY PLANNER
+
+let plans = load("zuhaibPlans");
+
+$("plannerDate").value = new Date().toISOString().slice(0, 10);
+
+function addPlan() {
+    const date = $("plannerDate").value;
+    const text = $("plannerInput").value.trim();
+
+    if (!date || !text) return alert("Enter a date and plan.");
+
+    plans.push({date, text});
+    save("zuhaibPlans", plans);
+    $("plannerInput").value = "";
+    showPlans();
+}
+
+function showPlans() {
+    $("plannerList").innerHTML = "";
+
+    plans.forEach((plan, i) => {
+        const item = document.createElement("div");
+        item.className = "list-item";
+
+        const text = document.createElement("span");
+        text.textContent = plan.date + " — " + plan.text;
+
+        const button = document.createElement("button");
+        button.className = "delete-btn";
+        button.textContent = "×";
+
+        button.onclick = () => {
+            plans.splice(i, 1);
+            save("zuhaibPlans", plans);
+            showPlans();
+        };
+
+        item.append(text, button);
+        $("plannerList").append(item);
+    });
+}
+
+// HABIT TRACKER
+
+const habitNames = [
+    "📚 Study for 1 hour",
+    "💪 Exercise",
+    "💧 Drink enough water",
+    "📖 Learn something new",
+    "😴 Sleep on time",
+    "🚶 Go for a walk"
+];
+
+const today = new Date().toLocaleDateString("en-CA");
+
+let habitData = load("zuhaibHabits", {});
+
+if (habitData.date !== today) {
+    habitData = {date: today, completed: []};
+}
+
+function showHabits() {
+    $("habitList").innerHTML = "";
+
+    habitNames.forEach((name, i) => {
+        const item = document.createElement("label");
+        item.className = "list-item";
+
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.style.width = "auto";
+        checkbox.checked = habitData.completed.includes(i);
+
+        checkbox.onchange = () => {
+            if (checkbox.checked) {
+                habitData.completed.push(i);
+            } else {
+                habitData.completed =
+                    habitData.completed.filter(x => x !== i);
+            }
+
+            save("zuhaibHabits", habitData);
+            showHabits();
+        };
+
+        item.append(checkbox, document.createTextNode(name));
+        $("habitList").append(item);
+    });
+
+    const percent = Math.round(
+        habitData.completed.length / habitNames.length * 100
+    );
+
+    $("habitProgress").textContent = percent + "%";
+    $("habitBar").style.width = percent + "%";
+}
+
+// GALLERY
+
+let photos = load("zuhaibGallery");
+
+function showGallery() {
+    $("galleryList").innerHTML = "";
+
+    photos.forEach((photo, i) => {
+        const wrapper = document.createElement("div");
+        wrapper.className = "gallery-photo";
+
+        const img = document.createElement("img");
+        img.src = photo;
+        img.alt = "My gallery photo";
+
+        const button = document.createElement("button");
+        button.className = "delete-btn";
+        button.textContent = "×";
+
+        button.onclick = () => {
+            photos.splice(i, 1);
+            save("zuhaibGallery", photos);
+            showGallery();
+        };
+
+        wrapper.append(img, button);
+        $("galleryList").append(wrapper);
+    });
+}
+
+$("photoInput").addEventListener("change", async event => {
+    const files = Array.from(event.target.files);
+
+    for (const file of files) {
+        if (!file.type.startsWith("image/")) continue;
+
+        if (file.size > 1.5 * 1024 * 1024) {
+            alert(file.name + " is larger than 1.5 MB.");
+            continue;
+        }
+
+        if (photos.length >= 10) {
+            alert("Maximum 10 photos allowed.");
+            break;
+        }
+
+        const reader = new FileReader();
+
+        await new Promise(resolve => {
+            reader.onload = () => {
+                photos.push(reader.result);
+                save("zuhaibGallery", photos);
+                resolve();
+            };
+
+            reader.onerror = resolve;
+            reader.readAsDataURL(file);
+        });
+    }
+
+    event.target.value = "";
+    showGallery();
 });
 
-// LOAD SAVED INFORMATION
+// CONTACT
+
+function sendMessage() {
+    const name = $("contactName").value.trim();
+    const email = $("contactEmail").value.trim();
+    const message = $("contactMessage").value.trim();
+
+    if (!name || !email || !message) {
+        return alert("Please fill in all fields.");
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        return alert("Please enter a valid email address.");
+    }
+
+    // REPLACE WITH YOUR EMAIL ADDRESS
+    const myEmail = "YOUR_EMAIL@example.com";
+
+    if (myEmail === "YOUR_EMAIL@example.com") {
+        return alert("Please add your email address in the code first.");
+    }
+
+    const subject = encodeURIComponent("Website message from " + name);
+
+    const body = encodeURIComponent(
+        "Name: " + name +
+        "\nEmail: " + email +
+        "\n\nMessage:\n" + message
+    );
+
+    window.location.href =
+        "mailto:" + myEmail + "?subject=" + subject + "&body=" + body;
+}
+
+// INITIAL DISPLAY
 
 showNotes();
 showExpenses();
+showTodos();
+showGoals();
+showPlans();
+showHabits();
 showGallery();
 
 </script>
